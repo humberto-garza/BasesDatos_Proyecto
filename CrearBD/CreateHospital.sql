@@ -52,7 +52,7 @@ CREATE TABLE Cita(
  	Fecha DATE,
  	Hora TIME,
  	Comentarios TEXT, 
- 	Motivo TEXT, 
+ 	Diagnostico TEXT, 
  	IDPac INT,
  	IDMed INT,
 	PRIMARY KEY (IDCita),
