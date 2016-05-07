@@ -2,7 +2,15 @@ USE Hospital;
 
 ##############################################################################
 # Desplegar a todos los Doctores
-
+SELECT  
+		M.IDMed,
+        M.Especialidad,
+		CONCAT(Pe.Nombre, ' ', Pe.ApellidoP,  ' ', Pe.ApellidoM) As 'Nombre Completo', 
+		Pe.Sexo, DATE_FORMAT(Pe.DoB,'%d/%m/%Y') AS 'Fecha de Nacimiento', 
+		Pe.Telefono, 
+		CONCAT(Pe.Calle, ' ', Pe.NumeroCalle, '. ', Pe.Ciudad, ', ', Pe.Estado, ', ', Pe.Pais, '. ', Pe.CP) AS Direccion
+	FROM Medico M, Persona Pe
+	WHERE M.IDPer = Pe.IDPer;
 
 ##############################################################################
 # Desplegar a todos los pacientes
@@ -192,10 +200,15 @@ WHERE
 
 ##############################################################################
 #Desplegar Recetas de una Cita
-
-
-
-SELECT *
+SELECT 
+	Re.IDReceta, CM.NombreComercial AS Medicamento, 
+    CM.IngredientesActivos AS Compuestos,
+    LM.Nombre AS Laboratorio,
+    CM.Unidades AS Contenido,
+    CM.Presentacion,
+    CONCAT(CM.ContNeto, " ", CM.ContUnidad) AS 'Contenido Neto',
+    CONCAT(MR.Dosis, " cada ", MR.Lapso, " ", MR.UnidadLapso) AS Dosis,
+    MR.Notas AS Indicaciones    
 FROM Cita Ci, Receta Re, MedRecetado MR, CatalogoMedicinas CM, LabMedico LM
 WHERE 
 	Re.IDCita = Ci.IDCita AND
