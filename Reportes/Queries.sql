@@ -77,4 +77,62 @@ FROM LTCatalogoRes CRes, LTCatalogo Cat, LTipo Ti,
 WHERE Results.IDLTCatRes = CRes.ID AND CRes.IDLTCat = Cat.ID AND Cat.IDLTipo = Ti.ID
 ORDER BY Results.Fecha;
 
+/*
+
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+# Regresa recetas
+SELECT p.IDPac, r.*, mr.*, cm.* FROM receta r
+JOIN medrecetado mr ON r.IDReceta=mr.IDReceta
+JOIN catalogomedicinas cm ON cm.IDCatMed=mr.IDCatMed 
+JOIN cita c ON r.IDCita=c.IDCita
+JOIN paciente p ON p.IDPac=c.IDPac;
+
+
+
+/*
+
+///////////////////////////////
+*/
+
+
+
+SELECT * 
+FROM Cita Ci, LabTest Test, LTCatalogo Catalogo, LTipo Tipo
+WHERE
+	Test.IDCita = Ci.IDCita AND
+	Test.IDLTCat = Catalogo.IDLTCat AND
+    Catalogo.IDLTipo = Tipo.IDLTipo;
+
+
+SELECT *
+FROM LabTest;
+
+
+
+
+SELECT 
+	DATE_FORMAT(Test.Fecha,'%d/%m/%Y') AS Fecha,  
+    TIME_FORMAT(Test.Hora, '%H:%i') AS Hora
+FROM Cita Ci, LabTest Test, LTCatalogo Catalogo, LTipo Tipo, LTResult Result, LTCatalogoRes CatalogoRes
+WHERE
+	Test.IDCita = Ci.IDCita AND
+    Result.IDLabTest = Test.IDLabTest AND
+    Result.IDLTCatRes = CatalogoRes.IDLTCatRes AND
+    CatalogoRes.IDLTCat = Catalogo.IDLTCat AND
+    Catalogo.IDLTipo = Tipo.IDLTipo;
+
 

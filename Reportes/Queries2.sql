@@ -1,6 +1,10 @@
 USE Hospital;
 
 ##############################################################################
+# Desplegar a todos los Doctores
+
+
+##############################################################################
 # Desplegar a todos los pacientes
 SELECT  
 	P.IDPac,
@@ -186,46 +190,29 @@ WHERE
     Ci.IDCita = '1';
 
 
+##############################################################################
+#Desplegar Recetas de una Cita
 
-
-# Regresa recetas
-SELECT p.IDPac, r.*, mr.*, cm.* FROM receta r
-JOIN medrecetado mr ON r.IDReceta=mr.IDReceta
-JOIN catalogomedicinas cm ON cm.IDCatMed=mr.IDCatMed 
-JOIN cita c ON r.IDCita=c.IDCita
-JOIN paciente p ON p.IDPac=c.IDPac;
-
-
-
-/*
-
-///////////////////////////////
-*/
-
-
-
-SELECT * 
-FROM Cita Ci, LabTest Test, LTCatalogo Catalogo, LTipo Tipo
-WHERE
-	Test.IDCita = Ci.IDCita AND
-	Test.IDLTCat = Catalogo.IDLTCat AND
-    Catalogo.IDLTipo = Tipo.IDLTipo;
 
 
 SELECT *
-FROM LabTest;
+FROM Cita Ci, Receta Re, MedRecetado MR, CatalogoMedicinas CM, LabMedico LM
+WHERE 
+	Re.IDCita = Ci.IDCita AND
+	MR.IDReceta = Re.IDReceta AND
+    MR.IDCatMed = CM.IDCatMed AND
+    CM.IDLab = LM.IDLab AND
+    Ci.IDCita = 2;
+    
+    
+    
+
+SELECT Ci.IDCita, Re.IDReceta, Re.Fecha
+FROM Cita Ci, Receta Re
+WHERE 
+	Re.IDCita = Ci.IDCita
+;
 
 
 
-
-SELECT 
-	DATE_FORMAT(Test.Fecha,'%d/%m/%Y') AS Fecha,  
-    TIME_FORMAT(Test.Hora, '%H:%i') AS Hora
-FROM Cita Ci, LabTest Test, LTCatalogo Catalogo, LTipo Tipo, LTResult Result, LTCatalogoRes CatalogoRes
-WHERE
-	Test.IDCita = Ci.IDCita AND
-    Result.IDLabTest = Test.IDLabTest AND
-    Result.IDLTCatRes = CatalogoRes.IDLTCatRes AND
-    CatalogoRes.IDLTCat = Catalogo.IDLTCat AND
-    Catalogo.IDLTipo = Tipo.IDLTipo;
 
