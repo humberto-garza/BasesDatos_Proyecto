@@ -286,3 +286,19 @@ Pe.Sexo = parSexo
 WHERE Pa.IDPac = parIDPac;
 END$$
 DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getInfoMedico`(IN parIDMed INT)
+BEGIN
+SELECT  
+M.IDMed,
+M.Especialidad,
+CONCAT(Pe.Nombre, ' ', Pe.ApellidoP,  ' ', Pe.ApellidoM) As 'Nombre Completo', 
+Pe.Sexo, DATE_FORMAT(Pe.DoB,'%d/%m/%Y') AS 'Fecha de Nacimiento', 
+Pe.Telefono, 
+CONCAT(Pe.Calle, ' ', Pe.NumeroCalle, '. ', Pe.Ciudad, ', ', Pe.Estado, ', ', Pe.Pais, '. ', Pe.CP) AS Direccion
+FROM Medico M, Persona Pe
+WHERE M.IDPer = Pe.IDPer && M.IDMed = parIDMed;
+END$$
+DELIMITER ;
+

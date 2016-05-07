@@ -246,8 +246,21 @@ SET Pe.Sexo = 'F'
 WHERE Pa.IDPac = '1';
 
 
-CALL modificarPaciente(1,'Samantha Elizabeth','Villarreal','Rodríguez','1994-02-02','8181852408','F');
+CALL modificarPaciente(1,'Samantha Elizabeth1','Villarreal','Rodríguez','1994-02-02','8181852408','F');
 
 SELECT *
 FROM Persona;
+
+
+SELECT  
+M.IDMed,
+M.Especialidad,
+CONCAT(Pe.Nombre, ' ', Pe.ApellidoP,  ' ', Pe.ApellidoM) As 'Nombre Completo', 
+Pe.Sexo, DATE_FORMAT(Pe.DoB,'%d/%m/%Y') AS 'Fecha de Nacimiento', 
+Pe.Telefono, 
+CONCAT(Pe.Calle, ' ', Pe.NumeroCalle, '. ', Pe.Ciudad, ', ', Pe.Estado, ', ', Pe.Pais, '. ', Pe.CP) AS Direccion
+FROM Medico M, Persona Pe
+WHERE M.IDPer = Pe.IDPer && M.IDMed = 1;
+
+
 
