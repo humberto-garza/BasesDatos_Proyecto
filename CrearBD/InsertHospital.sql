@@ -73,8 +73,8 @@ INSERT INTO LabTest VALUES (NULL,'2014-06-13',NULL,'Mamografía',5,3);
 INSERT INTO LabTest VALUES (NULL,'2015-05-30','07:30:00','Perfil Hormonal',5,4);
 INSERT INTO LabTest VALUES (NULL,'2015-02-25','09:48:00','Perfil Tiroideo',4,5);
 INSERT INTO LabTest VALUES (NULL,'2008-06-18',NULL,'Anitdopin 5 Drogas',7,6);
-INSERT INTO LabTest VALUES (NULL,'2010-03-29','01:19:00 PM','Hemograma',11,7);
-INSERT INTO LabTest VALUES (NULL,'2009-02-14','07:00:00 AM','Quimica Sanguínea',12,8);
+INSERT INTO LabTest VALUES (NULL,'2010-03-29','01:19:00','Hemograma',11,7);
+INSERT INTO LabTest VALUES (NULL,'2009-02-14','07:00:00','Quimica Sanguínea',12,8);
 
 #LTCatalogoRes
 INSERT INTO LTCatalogoRes VALUES (NULL,'Carotipo','46','46','chromosomas',NULL,NULL,NULL,'F',NULL,1);
