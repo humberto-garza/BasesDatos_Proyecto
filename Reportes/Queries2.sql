@@ -237,3 +237,17 @@ WHERE
     Ci.IDPac = 2;
 
 
+##############################################################################
+#Update Paciente
+
+UPDATE Persona Pe 
+JOIN Paciente Pa ON Pe.IDPer = Pa.IDPer 
+SET Pe.Sexo = 'F'
+WHERE Pa.IDPac = '1';
+
+
+CALL modificarPaciente(1,'Samantha Elizabeth','Villarreal','Rodríguez','1994-02-02','8181852408','F');
+
+SELECT *
+FROM Persona;
+
