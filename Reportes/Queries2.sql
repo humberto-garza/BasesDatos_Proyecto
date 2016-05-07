@@ -218,14 +218,22 @@ WHERE
     Ci.IDCita = 2;
     
     
-    
-
-SELECT Ci.IDCita, Re.IDReceta, Re.Fecha
-FROM Cita Ci, Receta Re
+#Desplegar Recetas de un Paciente
+SELECT 
+	Re.IDReceta, CM.NombreComercial AS Medicamento, 
+    CM.IngredientesActivos AS Compuestos,
+    LM.Nombre AS Laboratorio,
+    CM.Unidades AS Contenido,
+    CM.Presentacion,
+    CONCAT(CM.ContNeto, " ", CM.ContUnidad) AS 'Contenido Neto',
+    CONCAT(MR.Dosis, " cada ", MR.Lapso, " ", MR.UnidadLapso) AS Dosis,
+    MR.Notas AS Indicaciones    
+FROM Cita Ci, Receta Re, MedRecetado MR, CatalogoMedicinas CM, LabMedico LM
 WHERE 
-	Re.IDCita = Ci.IDCita
-;
-
-
+	Re.IDCita = Ci.IDCita AND
+	MR.IDReceta = Re.IDReceta AND
+    MR.IDCatMed = CM.IDCatMed AND
+    CM.IDLab = LM.IDLab AND
+    Ci.IDPac = 2;
 
 

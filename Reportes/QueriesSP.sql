@@ -13,6 +13,7 @@ CALL getInfoPaciente(6);
 CALL getLabsDePaciente(6);
 CALL getResultsDePaciente(6);
 CALL getExResDePaciente(6);
+CALL getRecetasDePaciente(1);
 
 SELECT *
 FROM Paciente Pa, Persona Pe
