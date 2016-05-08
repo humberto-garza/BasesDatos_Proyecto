@@ -28,5 +28,21 @@ Where Pa.IDPer = Pe.IDPer;
 # Insertar una receta
 
 
+CALL modificarMedico(1,'Cirujano','Samantha Elizabeth','Villarreal','Rodríguez','1994-02-02','8181852408','F');  
+CALL getInfoMedico(1);
+
+
+CALL modificarMedico(1,'Cirujano','Oscar Jaime','García','Rodríguez','1994-02-02','8181852408','F');  
+
+
+
+
+
+CALL getLabsFechas('2010-1-1','2016-1-1');
+
+
+
+
+
 
 
