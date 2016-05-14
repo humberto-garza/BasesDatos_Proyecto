@@ -633,3 +633,13 @@ CALL getCitasCompletas();
 
 
 
+SELECT IDReceta
+FROM Receta Re, Cita Ci
+WHERE Re.IDCita = Ci.IDCita AND Ci.IDPac = 1;
+
+
+
+
+
+
+
